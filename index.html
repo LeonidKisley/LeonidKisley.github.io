@@ -92,7 +92,7 @@
     <!-- Contenido oculto al inicio -->
     
 
-        <section id="inicio" style="display: none;">
+        <section id="infoEmpresa" style="display: none;">
             <div class="empresa-container">
                 <div class="info-contenido">
                 
@@ -125,20 +125,20 @@
 
 
             <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('btnMostrarInfo');
-            const info = document.getElementById('infoEmpresa');
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnMostrarInfo');
+    const info = document.getElementById('infoEmpresa');
 
-            btn.addEventListener('click', () => {
-            if (info.style.display === 'none' || info.style.display === '') {
-                info.style.display = 'block';
-                info.scrollIntoView({ behavior: 'smooth' });
-            } else {
-                info.style.display = 'none';
-            }
-            });
-        });
-        </script>
+    btn.addEventListener('click', () => {
+      if (info.style.display === 'none' || info.style.display === '') {
+        info.style.display = 'block';
+        info.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        info.style.display = 'none';
+      }
+    });
+  });
+</script>
 
 
     <section id="servicios"> 
