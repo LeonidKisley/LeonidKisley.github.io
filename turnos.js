@@ -4,7 +4,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const reservaForm = document.getElementById('reserva-form');
   const selectedDay = document.getElementById('selected-day');
   const selectedTime = document.getElementById('selected-time');
-  const btnReservar = document.getElementById('btn-reservar');
   const branches = document.querySelectorAll('.branch');
 
   if (branches.length > 0) {
@@ -71,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectedDay.textContent = slot.dataset.day;
         selectedTime.textContent = slot.dataset.time;
         reservaForm.style.display = 'block';
+        asignarEventoReservar();
       }
     });
     localStorage.removeItem('ultimaReserva');
@@ -90,6 +90,8 @@ document.addEventListener('DOMContentLoaded', () => {
     selectedTime.textContent = e.target.dataset.time;
     reservaForm.style.display = 'block';
 
+    asignarEventoReservar(); // 👈 Se vuelve a asignar el evento
+
     localStorage.setItem('seleccionTurno', JSON.stringify({
       dia: e.target.dataset.day,
       hora: e.target.dataset.time
@@ -106,82 +108,69 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  btnReservar.addEventListener('click', () => {
-    const slotSeleccionado = document.querySelector('.slot.selected');
-    if (!slotSeleccionado) {
-      alert('Seleccione un turno antes de reservar.');
-      return;
-    }
+  function asignarEventoReservar() {
+    const btnReservar = document.getElementById('btn-reservar');
+    const nuevoBtn = btnReservar.cloneNode(true); // 👈 Clonamos para evitar múltiples eventos
+    btnReservar.parentNode.replaceChild(nuevoBtn, btnReservar);
 
-    const dia = slotSeleccionado.dataset.day;
-    const hora = slotSeleccionado.dataset.time;
-    const sede = document.querySelector('.branch.selected')?.textContent || 'Ninguna';
+    nuevoBtn.addEventListener('click', () => {
+      const slotSeleccionado = document.querySelector('.slot.selected');
+      if (!slotSeleccionado) {
+        alert('Seleccione un turno antes de reservar.');
+        return;
+      }
 
-    if (slotSeleccionado.dataset.status !== 'Disponible') {
-      alert('Este turno ya está reservado.');
-      return;
-    }
+      const dia = slotSeleccionado.dataset.day;
+      const hora = slotSeleccionado.dataset.time;
+      const sede = document.querySelector('.branch.selected')?.textContent || 'Ninguna';
 
-    slotSeleccionado.dataset.status = 'Reservado';
-    slotSeleccionado.textContent = 'Reservado';
-    slotSeleccionado.classList.add('reservado');
-    slotSeleccionado.classList.remove('selected');
+      if (slotSeleccionado.dataset.status !== 'Disponible') {
+        alert('Este turno ya está reservado.');
+        return;
+      }
 
-    reservasGuardadas.push({ dia, hora });
-    localStorage.setItem('reservas', JSON.stringify(reservasGuardadas));
-    localStorage.setItem('ultimaReserva', JSON.stringify({ dia, hora }));
-    localStorage.setItem('fechaCita', dia);
-    localStorage.setItem('horaCita', hora);
-    localStorage.setItem('sedeCita', sede);
+      slotSeleccionado.dataset.status = 'Reservado';
+      slotSeleccionado.textContent = 'Reservado';
+      slotSeleccionado.classList.add('reservado');
+      slotSeleccionado.classList.remove('selected');
 
-    window.location.href = `confirmacion.html?dia=${dia}&hora=${hora}&sede=${sede}`;
+      reservasGuardadas.push({ dia, hora });
+      localStorage.setItem('reservas', JSON.stringify(reservasGuardadas));
+      localStorage.setItem('ultimaReserva', JSON.stringify({ dia, hora }));
+      localStorage.setItem('fechaCita', dia);
+      localStorage.setItem('horaCita', hora);
+      localStorage.setItem('sedeCita', sede);
+
+      window.location.href = `confirmacion.html?dia=${dia}&hora=${hora}&sede=${sede}`;
+    });
+  }
+
+  const btnLimpiar = document.getElementById('btn-limpiar');
+  btnLimpiar.addEventListener('click', () => {
+    reservasGuardadas = [];
+    localStorage.removeItem('reservas');
+    localStorage.removeItem('ultimaReserva');
+    localStorage.removeItem('fechaCita');
+    localStorage.removeItem('horaCita');
+    localStorage.removeItem('sedeCita');
+
+    document.querySelectorAll('.slot.reservado').forEach(slot => {
+      slot.dataset.status = 'Disponible';
+      slot.textContent = 'Disponible';
+      slot.classList.remove('reservado');
+    });
+
+    reservaForm.style.display = 'none';
+
+    alert('Todas las reservas han sido borradas.');
   });
 
-
-// Código que ya tienes en turnos.js
-// codigo para separar sedes
-
-// ...tu código existente...
-
-const btnLimpiar = document.getElementById('btn-limpiar');
-
-btnLimpiar.addEventListener('click', () => {
-  reservasGuardadas = [];
-  localStorage.removeItem('reservas');
-  localStorage.removeItem('ultimaReserva');
-  localStorage.removeItem('fechaCita');
-  localStorage.removeItem('horaCita');
-  localStorage.removeItem('sedeCita');
-
-  document.querySelectorAll('.slot.reservado').forEach(slot => {
-    slot.dataset.status = 'Disponible';
-    slot.textContent = 'Disponible';
-    slot.classList.remove('reservado');
-  });
-
-  reservaForm.style.display = 'none';
-
-  alert('Todas las reservas han sido borradas.');
-});
-
-// Sección oculta - Quienes somos ? 
-
-document.addEventListener('DOMContentLoaded', () => {
+  // Sección oculta - Quienes somos ?
   const enlace = document.getElementById('mostrarInfo');
   const info = document.getElementById('infoOculta');
 
-  enlace.addEventListener('click', (e) => {
-    e.preventDefault(); // Evita que el enlace recargue la página
-
-    // Alternar visibilidad
-    if (info.style.display === 'none') {
-      info.style.display = 'block';
-    } else {
-      info.style.display = 'none';
-    }
+  enlace?.addEventListener('click', (e) => {
+    e.preventDefault();
+    info.style.display = (info.style.display === 'none') ? 'block' : 'none';
   });
-});
-
-
-
 });
