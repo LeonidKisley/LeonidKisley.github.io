@@ -22,6 +22,7 @@ body {
   position: relative;    /* necesario si usas position absoluta en hijos */
   overflow: hidden;
 }
+
 .register-container {
   height: 40vw;
   width: 10vw;

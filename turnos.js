@@ -141,8 +141,46 @@ document.addEventListener('DOMContentLoaded', () => {
 // Código que ya tienes en turnos.js
 // codigo para separar sedes
 
+// ...tu código existente...
 
+const btnLimpiar = document.getElementById('btn-limpiar');
 
+btnLimpiar.addEventListener('click', () => {
+  reservasGuardadas = [];
+  localStorage.removeItem('reservas');
+  localStorage.removeItem('ultimaReserva');
+  localStorage.removeItem('fechaCita');
+  localStorage.removeItem('horaCita');
+  localStorage.removeItem('sedeCita');
+
+  document.querySelectorAll('.slot.reservado').forEach(slot => {
+    slot.dataset.status = 'Disponible';
+    slot.textContent = 'Disponible';
+    slot.classList.remove('reservado');
+  });
+
+  reservaForm.style.display = 'none';
+
+  alert('Todas las reservas han sido borradas.');
+});
+
+// Sección oculta - Quienes somos ? 
+
+document.addEventListener('DOMContentLoaded', () => {
+  const enlace = document.getElementById('mostrarInfo');
+  const info = document.getElementById('infoOculta');
+
+  enlace.addEventListener('click', (e) => {
+    e.preventDefault(); // Evita que el enlace recargue la página
+
+    // Alternar visibilidad
+    if (info.style.display === 'none') {
+      info.style.display = 'block';
+    } else {
+      info.style.display = 'none';
+    }
+  });
+});
 
 
 

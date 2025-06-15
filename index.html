@@ -5,18 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happygroup</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+<div id="cart-message" class="cart-message">Producto agregado al carrito 🛒</div>
 <body>
     <header>
         <div class="container-hero">
             <div class="container hero">
                 <div class="customer-support">
-                    <i class="fa-solid fa-headset"></i>
-                    <div class="content-customer-support">
-                        <span class="text">Soporte al cliente</span>
-                        <span class="number">900070069</span>
-                    </div>
+                    <a href="https://wa.me/51989796663" target="_blank" class="content-customer-support" style="text-decoration: none; color: inherit;">
+                        <div style="text-align: center;">
+                            <i class="fa-solid fa-headset" style="font-size: 24px; margin-bottom: 5px;"></i><br>
+                            <span class="text" style="display: block;">Soporte al cliente</span>
+                            <span class="number" style="display: block;">900070069</span>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="container-logo">
@@ -27,12 +30,29 @@
                 </div>
 
                 <div class="container-user">
-                    <i class="fa-solid fa-user"></i>
-                    <i class="fa-solid fa-basket-shopping"></i>
-                    <div class="content-shopping-cart">
-                        <span class="text">Carrito</span>
-                        <span class="number">(0)</span>
+                    <div class="usuario-box">
+                    <a href="login.html">
+                        <i class="fa-solid fa-user"></i>
+                    </a>
+                    <p id="nombreUsuario"></p> <!-- Aquí aparecerá el nombre -->
                     </div>
+
+                    <script>
+                        document.addEventListener("DOMContentLoaded", function () {
+                            const nombre = localStorage.getItem("usuarioLogueado");
+
+                            if (nombre) {
+                            document.getElementById("nombreUsuario").textContent = "Hola, " + nombre;
+                            }
+                        });
+                        </script>
+                    <a href="carrito.html" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                        <i class="fa-solid fa-basket-shopping" style="font-size: 3rem; color: #5c2cdd; padding-left: 1rem;"></i>
+                        <div class="content-shopping-cart">
+                            <span class="text">Carrito</span>
+                            <span class="number" id="cart-count">(0)</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -41,12 +61,14 @@
             <nav class="navbar container">
                 <i class="fa-solid fa-bars"></i>
                 <ul class="menu">
-                    <li><a href="#">Inicio</a></li>
-                    <li><a href="#">Servicios</a></li>
-                    <li><a href="#">Agenda tu cita</a></li>
-                    <li><a href="#">Promociones</a></li>
-                    <li><a href="#">Productos</a></li>
-                </ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#galeria">galeria</a></li>
+                    <li><a href="#cita">Agenda tu cita</a></li>
+                    <li><a href="#promociones">Promociones</a></li>
+                    <li><a href="#productos">Productos</a></li>
+                    <li><a href="#ubicanos">Ubicanos</a></li>
+                    </ul>
                 <form class="search-form">
                     <input type="search" placeholder="Buscar...">
                     <button class="btn-search">
@@ -61,13 +83,68 @@
         <div class="content-banner">
             <p> Barber shop</p>
             <h2> Happy Group <br> Quienes somos ?  </h2>
-            <a href="#"> Somos una familia </a>
+            <button id="btnMostrarInfo">Somos una familia</button>
         </div>
     </section>
 
-    <section>
+    <!-- SECCIÓN OCULTA -->
+
+    <!-- Contenido oculto al inicio -->
+    
+
+        <section id="infoEmpresa" style="display: none;">
+            <div class="empresa-container">
+                <div class="info-contenido">
+                
+                 <div class="separador-recto"></div>
+
+                <!-- Texto a la izquierda -->
+                <article class="texto-empresa">
+                    <h2>¿Quiénes somos?</h2>
+                    <p>
+                    En <strong>Happy Group Barber Shop</strong> somos más que una barbería.
+                    Somos una familia apasionada por el estilo, la confianza y con mas de 3 años de experiencia.  
+                    Nos dedicamos a brindar atención personalizada y servicios de alta calidad. Nuestro equipo está 
+                    conformado por profesionales altamente capacitados que valoran el detalle, la puntualidad 
+                    y la comodidad de nuestros clientes.Buscamos crear una comunidad donde cada visita sea más que
+                    un corte, sea una experiencia de confianza, estilo y bienestar.
+                    </p>
+                </article>
+
+                
+                <!-- Imagen a la derecha -->
+
+                <figure class="imagen-empresa">
+                    <img src="img/BHG.png" alt="Nuestra familia en Happy Group" />
+                </figure>
+
+                </div>
+            </div>
+            </section>
+
+
+
+            <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('btnMostrarInfo');
+    const info = document.getElementById('infoEmpresa');
+
+    btn.addEventListener('click', () => {
+      if (info.style.display === 'none' || info.style.display === '') {
+        info.style.display = 'block';
+        info.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        info.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+    <section id="servicios"> 
         <!-- MAIN CONTENT-->
         <main class="main-content">
+            <h1 class="titulo-servicioss">SERVICIOS</h1>
             <section class="container container-features">
                 <div class="card-feature">
                     <i class="fa-solid fa-mobile-screen-button"></i>
@@ -123,6 +200,118 @@
                 </div>
             </section>
                 
+            <!-- SECTOR DE CORTES EN TENDENCIA -->
+                <!-- Taper fade-->
+            
+                     <!-- TAPER FADE -->
+                        <section id="detalleTaper" style="display: none;">
+                            <div class="empresa-container">
+                                <div class="info-contenido">
+
+                                    <div class="separador-recto"></div>
+
+                                    <article class="texto-empresa">
+                                        <h2>Taper Fade</h2>
+                                        <p>
+                                            El <strong>Taper Fade</strong> es mucho más que un corte moderno, es una evolución del estilo clásico que combina elegancia con frescura.
+                                            Surgido en las calles de Nueva York y popularizado por atletas y músicos, este corte se ha convertido en un símbolo de versatilidad.
+                                            El degradado suave en los laterales y nuca transmite limpieza y estructura, mientras que la parte superior se adapta a cualquier look:
+                                            peinado hacia atrás, rizado o natural. <br></br>
+                                            Es ideal para quienes buscan un estilo sobrio pero con carácter, fácil de mantener y con mucha actitud. 
+                                            En la actualidad es un corte en tendencia puesto que es versatil, combian con cualquier tipo de rostro.
+                                        </p>    
+                                    </article>
+
+                                    <figure class="imagen-empresa">
+                                        <img src="img/TaperFadeTendencia.jpeg" alt="Corte Taper Fade" />
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- MOD CUT -->
+                        <section id="detalleMod" style="display: none;">
+                            <div class="empresa-container">
+                                <div class="info-contenido">
+
+                                    <div class="separador-recto"></div>
+
+                                    <article class="texto-empresa">
+                                        <h2>Mod Cut</h2>
+                                        <p>
+                                            El <strong> Mod Cut </strong> nació en los años 60, en plena revolución juvenil del Reino Unido.
+                                            Inspirado en la cultura "moderna", este corte representaba rebeldía, estilo y amor por la música alternativa.
+                                            Con su estructura pulida, flequillo largo y contornos definidos, ofrece una vibra retro que ha regresado con fuerza entre los amantes de la moda vintage.
+                                            Es ideal para quienes buscan un look distinto, artístico y con mucha personalidad. <br></br>
+                                            En la actualidad al, ser un corte fresco y ligero manteniendo el volumen se ha vuelto el favorito de muchos.
+                                        </p>
+                                    </article>
+
+                                    <figure class="imagen-empresa">
+                                        <img src="img/ModCutTendencia.jpg" alt="Corte Mod Cut" />
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- MIDDLE PART -->
+                        <section id="detalleMiddle" style="display: none;">
+                            <div class="empresa-container">
+                                <div class="info-contenido">
+
+                                    <div class="separador-recto"></div>
+
+                                    <article class="texto-empresa">
+                                        <h2>Middle Part</h2>
+                                         <p>
+                                            El <strong> Middel Part </strong> o "corte de librito" es un clásico que ha trascendido generaciones.
+                                            Desde íconos del pop coreano hasta leyendas del cine de los 90, este corte ha mantenido su lugar como un símbolo de frescura y autenticidad.
+                                            Se caracteriza por su simetría, equilibrio y naturalidad. Aporta una apariencia relajada, juvenil y despreocupada, pero con un toque de sofisticación.
+                                            Es perfecto para quienes desean destacar sin exagerar. <br></br>
+                                            En la actualidad, los jovenes que buscan el estilo old money lo implementan como una forma de verse elegantes.
+                                        </p>
+                                    </article>
+
+                                    <figure class="imagen-empresa">
+                                        <img src="img/MiddelPartTendencia.jpg" alt="Corte Middle Part" />
+                                    </figure>
+
+                                </div>
+                            </div>
+                        </section>
+
+            <!-- Detalles de cortes (secciones ocultas) -->
+                
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            const cortes = [
+                                { boton: '.cut-taper', seccion: 'detalleTaper' },
+                                { boton: '.cut-modcut', seccion: 'detalleMod' },
+                                { boton: '.cut-Middel', seccion: 'detalleMiddle' }
+                            ];
+
+                            cortes.forEach(corte => {
+                                const btn = document.querySelector(corte.boton);
+                                const section = document.getElementById(corte.seccion);
+
+                                btn.addEventListener('click', () => {
+                                    // Ocultar todos los detalles primero
+                                    document.querySelectorAll('section[id^="detalle"]').forEach(sec => {
+                                        sec.style.display = 'none';
+                                    });
+
+                                    // Mostrar el que corresponde
+                                    section.style.display = 'block';
+                                    
+                                });
+                            });
+                        });
+                        </script>
+
+                <!--MEJORES CORTES-->
             <section class="container top-corte">
                 <h1 class="heading-1"> Mejores Cortes</h1>
                 <div class="container-options">
@@ -130,150 +319,201 @@
                     <span> Mas recientes</span>
                     <span> Mas Realizados</span>
                 </div>
-                <div class="container-corte">
-                    <!--CORTE 1-->
-                    <div class="card-corte">
-                        <div class="container-img">
-                            <img src="img/taperfade.png" alt=" Taper Fade">
-                            <span class="discount">-10%</span>
-                            <div class="button-group">
-                                <span>
-                                    <i class="fa-solid fa-eye"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-heart"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-code-compare"></i>
-                                </span>
+
+                <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            
+                            <!-- CORTE 1 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/taperfade.png" alt="Taper Fade">
+                                <span class="discount">-10%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Taper fade</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">18.00 Soles <span>20.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 2 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/ModCut.jpg" alt="Mod Cut">
+                                <span class="discount">-20%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Mod Cut</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">17.60 Soles <span>22.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 3 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/Mohicano.png" alt="Mohicano">
+                                <span class="discount">-15%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Mohicano</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">17.00 Soles <span>20.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 4 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/Mullet.png" alt="Mullet">
+                                <span class="discount">0%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Mullet</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">20.00 Soles <span>20.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 5 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/Wolfcut.jpg" alt="Wolfcut">
+                                <span class="discount">25%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Wolfcut</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">16.50 Soles <span>22.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 6 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/FrenchCrop.jpg" alt="FrenchCrop">
+                                <span class="discount">20%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>FrenchCrop</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">16.00 Soles <span>20.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 7 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/Buzzcut.jpg" alt="Buzzcut">
+                                <span class="discount">0%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Buzzcut</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">18.00 Soles <span>18.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 8 -->
+                            <div class="card-corte">
+                            <div class="container-img">
+                                <img src="img/Fringe.jpg" alt="Fringe">
+                                <span class="discount">25%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3>Fringe</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">16.50 Soles <span>22.00 Soles</span></p>
+                            </div>
                             </div>
 
                         </div>
-                        <div class="content-card-corte">
-                            <div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-                            <h3>Taper fade</h3>
-                            <span class="add-cart">
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">18.00 Soles <span>20.00 Soles</span></p>
-                        </div>
                     </div>
 
-                    <!--CORTE 2-->
-                    <div class="card-corte">
-                        <div class="container-img">
-                            <img src="img/ModCut.jpg" alt=" Mod cut">
-                            <span class="discount">-20%</span>
-                            <div class="button-group">
-                                <span>
-                                    <i class="fa-solid fa-eye"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-heart"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-code-compare"></i>
-                                </span>
-                            </div>
+                
+                <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+                        const track = document.querySelector(".carousel-track");
+                        const cards = Array.from(track.children);
 
-                        </div>
-                        <div class="content-card-corte">
-                            <div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-                            <h3>Mod Cut</h3>
-                            <span class="add-cart">
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">17.60 Soles <span>22.00 Soles</span></p>
-                        </div>
-                    </div>
-
-                    <!--CORTE  3-->
-                    <div class="card-corte">
-                        <div class="container-img">
-                            <img src="img/Mohicano.png" alt=" Mohicano">
-                            <span class="discount">-15%</span>
-                            <div class="button-group">
-                                <span>
-                                    <i class="fa-solid fa-eye"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-heart"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-code-compare"></i>
-                                </span>
-                            </div>
-
-                        </div>
-                        <div class="content-card-corte">
-                            <div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-                            <h3>Mohicano</h3>
-                            <span class="add-cart">
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">17.00 Soles <span>20.00 Soles</span></p>
-                        </div>
-                    </div>
-
-                    <!--CORTE  4-->
-                    <div class="card-corte">
-                        <div class="container-img">
-                            <img src="img/Mullet.png" alt=" Mullet">
-                            <span class="discount">0%</span>
-                            <div class="button-group">
-                                <span>
-                                    <i class="fa-solid fa-eye"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-heart"></i>
-                                </span>
-                                <span>
-                                    <i class="fa-solid fa-code-compare"></i>
-                                </span>
-                            </div>
-
-                        </div>
-                        <div class="content-card-corte">
-                            <div class="stars">
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-solid fa-star"></i>
-								<i class="fa-regular fa-star"></i>
-							</div>
-                            <h3>Mullet</h3>
-                            <span class="add-cart">
-								<i class="fa-solid fa-basket-shopping"></i>
-							</span>
-							<p class="price">20.00 Soles <span>20.00 Soles</span></p>
-                        </div>
-                    </div>
+                        // Duplicamos solo una vez para evitar acumulación si se recarga
+                        cards.forEach(card => {
+                            const clone = card.cloneNode(true);
+                            track.appendChild(clone);
+                        });
+                        });
+                </script>
 
 
-                </div>
+
             </section>
 
-
             <!--- GalLery-->
-            <section class="gallery">
+            <section id="galeria" class="gallery">
                 <img src="img/Barbería-1.jpg" alt="gallery Img1" class="gallery-img-1">
                 <img src="img/Barbería-2.jpg" alt="gallery Img2" class="gallery-img-2">
                 <img src="img/Barbería-3.jpg" alt="gallery Img3" class="gallery-img-3">
@@ -290,7 +530,7 @@
 
                 
 <!-- AGENDA TU CITA -->
-<section class="appointment-section">
+<section id="cita" class="appointment-section">
   <div class="container-appointment">
     <h2 class="appointment-title">Agendar tu cita</h2>
     <p>Selecciona un turno disponible:</p>
@@ -300,8 +540,9 @@
       <div class="branch" data-branch="sede1">Sede 1</div>
       <div class="branch" data-branch="sede2">Sede 2</div>
       <div class="branch" data-branch="sede3">Sede 3</div>
+      
     </div>
-
+    <button id="btn-limpiar">Limpiar Reservas</button>
     <!-- Grilla de turnos -->
     <div class="schedule-grid"></div>
 
@@ -533,7 +774,7 @@
             </section>
 
             
-                <section class="container promo">
+                <section id="promociones"class="container promo">
                     <h1 class="heading-1">Promociones Disponibles</h1>
                     <h2 class="heading-2"> No te pierdas de estas promociones que tenemos para ti</h2>
 
@@ -690,9 +931,225 @@
                 <h2>Un verdadero caballero empieza por su corte</h2>
                 <p>Porque verte bien no es una opción, es una decisión</p>
             </div>
+
+
+                <div id="notificacion-carrito" class="notificacion-carrito">
+                        ¡Producto agregado al carrito!
+                </div>
+
+            <!-- PRODUCTOS -->
             </section>
 
-               <section class="location-section">
+
+            <section id="productos" class="productos-barberia">
+                <h1 class="heading-1">⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀</h1>
+                <h1 class="heading-1"> PRODUCTOS </h1>
+                 <div class="carrusel-productos">
+                    <div class="pista-productos">
+                            
+                                                <!-- PRODUCTO 1 -->
+                                <div class="tarjeta-producto">
+                                    <div class="tarjeta-img">
+                                        <img src="img/Shampoo1.png" alt="Shampoo1">
+                                        <span class="discount">-10%</span>
+                                        <div class="button-group">
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span><i class="fa-solid fa-heart"></i></span>
+                                            <span><i class="fa-solid fa-code-compare"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-card-corte">
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <h3>Shampoo Barbería</h3>
+                                        <span class="add-cart"
+                                            data-nombre="Shampoo Barbería"
+                                            data-precio="18.00"
+                                            data-imagen="img/Shampoo1.png">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </span>
+                                        <p class="price">18.00 Soles <span>20.00 Soles</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- PRODUCTO 2 -->
+                                <div class="tarjeta-producto">
+                                    <div class="tarjeta-img">
+                                        <img src="img/Shampoo2.png" alt="Shampoo2">
+                                        <span class="discount">-20%</span>
+                                        <div class="button-group">
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span><i class="fa-solid fa-heart"></i></span>
+                                            <span><i class="fa-solid fa-code-compare"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-card-corte">
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <h3>Shampoo Nevada</h3>
+                                        <span class="add-cart"
+                                            data-nombre="Shampoo Nevada"
+                                            data-precio="17.60"
+                                            data-imagen="img/Shampoo2.png">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </span>
+                                        <p class="price">17.60 Soles <span>22.00 Soles</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- PRODUCTO 3 -->
+                                <div class="tarjeta-producto">
+                                    <div class="tarjeta-img">
+                                        <img src="img/Shampoo3.png" alt="Mohicano">
+                                        <span class="discount">-15%</span>
+                                        <div class="button-group">
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span><i class="fa-solid fa-heart"></i></span>
+                                            <span><i class="fa-solid fa-code-compare"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-card-corte">
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <h3>Shampoo Morfose Ossion</h3>
+                                        <span class="add-cart"
+                                            data-nombre="Shampoo Morfose Ossion"
+                                            data-precio="17.00"
+                                            data-imagen="img/Shampoo3.png">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </span>
+                                        <p class="price">17.00 Soles <span>20.00 Soles</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- PRODUCTO 4 -->
+                                <div class="tarjeta-producto">
+                                    <div class="tarjeta-img">
+                                        <img src="img/Shampoo4-Photoroom.jpg" alt="Mullet">
+                                        <span class="discount">0%</span>
+                                        <div class="button-group">
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span><i class="fa-solid fa-heart"></i></span>
+                                            <span><i class="fa-solid fa-code-compare"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-card-corte">
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <h3>Shampoo Bosley</h3>
+                                        <span class="add-cart"
+                                            data-nombre="Shampoo Bosley"
+                                            data-precio="20.00"
+                                            data-imagen="img/Shampoo4-Photoroom.jpg">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </span>
+                                        <p class="price">20.00 Soles <span>20.00 Soles</span></p>
+                                    </div>
+                                </div>
+
+                                <!-- PRODUCTO 5 -->
+                                <div class="tarjeta-producto">
+                                    <div class="tarjeta-img">
+                                        <img src="img/Cera mate 2.png" alt="Wolfcut">
+                                        <span class="discount">25%</span>
+                                        <div class="button-group">
+                                            <span><i class="fa-solid fa-eye"></i></span>
+                                            <span><i class="fa-solid fa-heart"></i></span>
+                                            <span><i class="fa-solid fa-code-compare"></i></span>
+                                        </div>
+                                    </div>
+                                    <div class="content-card-corte">
+                                        <div class="stars">
+                                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                        </div>
+                                        <h3>Cera Lobo Negro</h3>
+                                        <span class="add-cart"
+                                            data-nombre="Cera Lobo Negro"
+                                            data-precio="16.50"
+                                            data-imagen="img/Cera mate 2.png">
+                                            <i class="fa-solid fa-basket-shopping"></i>
+                                        </span>
+                                        <p class="price">16.50 Soles <span>22.00 Soles</span></p>
+                                    </div>
+                                </div>
+
+                            <!-- CORTE 6 -->
+                            <div class="tarjeta-producto">
+                                <div class="tarjeta-img">
+                                <img src="img/Cera mate 3.png" alt="FrenchCrop">
+                                <span class="discount">20%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Cera Salon IN #1</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">16.00 Soles <span>20.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- CORTE 7 -->
+                            <div class="tarjeta-producto">
+                                <div class="tarjeta-img">
+                                <img src="img/Cera mate 4.png" alt="Buzzcut">
+                                <span class="discount">0%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i>
+                                </div>
+                                <h3>Cera Salon IN #2</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">18.00 Soles <span>18.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                            <!-- PRODUCTO 9 -->
+                            <div class="tarjeta-producto">
+                                <div class="tarjeta-img">
+                                <img src="img/Gel1.png" alt="Fringe">
+                                <span class="discount">25%</span>
+                                <div class="button-group">
+                                <span><i class="fa-solid fa-eye"></i></span>
+                                <span><i class="fa-solid fa-heart"></i></span>
+                                <span><i class="fa-solid fa-code-compare"></i></span>
+                                </div>
+                            </div>
+                            <div class="content-card-corte">
+                                <div class="stars">
+                                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                                </div>
+                                <h3>Fringe</h3>
+                                <span class="add-cart"><i class="fa-solid fa-basket-shopping"></i></span>
+                                <p class="price">16.50 Soles <span>22.00 Soles</span></p>
+                            </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+
+                </section>
+
+            <!-- UBICACIÓN -->
+               <section id="ubicanos" class="location-section">
             <section class="location-section">
                     <section class="location-section">
                     <div class="container-location">
@@ -785,10 +1242,96 @@
                     </div>
                 </footer>
 
-    <script src="https://kit.fontawesome.com/81581fb069.js" 
+                <script src="https://kit.fontawesome.com/81581fb069.js" 
         crossorigin="anonymous">
     </script>
+
+
+
 </body>
+
+<!-- Boton que lleve al inicio -->
+<button id="btnScrollTop" title="Volver arriba">
+  <i class="fas fa-arrow-up"></i>
+</button>
+
+
+<!-- Script -->
+
+<script>
+  const btn = document.getElementById("btnScrollTop");
+
+  window.onscroll = function () {
+    btn.style.display = (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) ? "block" : "none";
+  };
+
+  btn.addEventListener("click", function () {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth"
+    });
+  });
+</script>
+
+
+
+<script>
+  document.querySelectorAll('.add-cart').forEach(button => {
+    button.addEventListener('click', () => {
+      // 1) Encuentra el contenedor del producto
+      const card = button.closest('.tarjeta-producto') 
+                || button.closest('.card-corte') 
+                || button.closest('.content-card-corte');
+      if (!card) return;
+
+      // 2) Lee nombre y precio
+      const name = card.querySelector('h3')?.textContent || 'Producto';
+      const priceText = card.querySelector('.price')?.childNodes[0]?.textContent || "0";
+      const price = priceText.replace("Soles", "").trim();
+
+      // 3) Captura siempre la imagen real
+      const imgEl = card.querySelector('img');
+      const imgSrc = imgEl ? imgEl.getAttribute('src') : 'img/default.png';
+
+      // 4) Guarda el objeto completo en localStorage
+      const product = { name, price, img: imgSrc };
+      const cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+
+      // 5) Actualiza el contador
+      const counter = document.getElementById('cart-count');
+      if (counter) counter.textContent = `(${cart.length})`;
+
+      // 6) Muestra mensaje flotante
+      const msg = document.createElement('div');
+      msg.textContent = `🛒 ${name} agregado al carrito`;
+      Object.assign(msg.style, {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        background: '#000',
+        color: '#fff',
+        padding: '10px',
+        borderRadius: '5px',
+        zIndex: '9999'
+      });
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 2000);
+    });
+  });
+
+  // Inicializa el contador al cargar la página
+  document.addEventListener('DOMContentLoaded', () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const counter = document.getElementById('cart-count');
+    if (counter) counter.textContent = `(${cart.length})`;
+  });
+</script>
+
+
+
 
 </html>
 
+<div id="cart-message" class="cart-message"></div>

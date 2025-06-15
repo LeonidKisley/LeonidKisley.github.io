@@ -36,20 +36,49 @@ html {
     padding: 2rem 0;
 }
 
-.customer-support {
-    display: flex;
-    align-items: center;
-    gap: 2rem;
+/* CUSTOMER SUPPORT */
+content-customer-support {
+    text-decoration: none;
+    color: #7e57c2; /* Morado por defecto */
+    text-align: center;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.customer-support i {
-    font-size: 3.3rem;
+.content-customer-support i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    display: block;
+    transition: transform 0.3s ease, color 0.3s ease;
 }
 
-.content-customer-support {
-    display: flex;
-    flex-direction: column;
+.content-customer-support .text,
+.content-customer-support .number {
+    display: block;
+    transition: color 0.3s ease;
 }
+
+.content-customer-support:hover {
+    color: #5c2cdd; /* Morado más claro al pasar el mouse */
+    transform: scale(1.1); /* Aumenta el tamaño */
+}
+
+.content-customer-support:hover i {
+    color: #5c2cdd;
+    transform: scale(1.2);
+}
+
+
+/*¨Texto se agraden cuando se pase el mouse */
+.content-customer-support:hover .text,
+.content-customer-support:hover .number {
+    font-weight: bold; /* Negrita en hover */
+    color: #5c2cdd;
+}
+
+/* LOGO DE LA BARBERÍA */
+
+
 
 .container-logo {
     display: flex;
@@ -76,14 +105,14 @@ html {
 
 .container-user .fa-user {
 	font-size: 3rem;
-	color: var(--primary-color);
+	color: #5c2cdd;
 	padding-right: 2.5rem;
 	border-right: 1px solid #e2e2e2;
 }
 
 .container-user .fa-basket-shopping{
     font-size: 3rem;
-    color: var(--primary-color);
+    color: #5c2cdd;
     padding-left: 1rem;
 }
 
@@ -129,7 +158,7 @@ html {
     content: '';
     width: 1.5rem;
     height: 1px;
-    background-color:#8567f1;
+    background-color:#5c2cdd;
     position: absolute;
     bottom: -3px;
     left: 50%;
@@ -143,7 +172,7 @@ html {
 }
 
 .menu a:hover{
-    color: #8567f1;
+    color: #5c2cdd;
 }
 
 
@@ -194,7 +223,7 @@ html {
 /* *************************** */
 
 .banner {
-	background-image: linear-gradient(100deg, #000000, #00000020),
+	background-image: linear-gradient(100deg, #000000, #00000041),
 		url('img/FondoBarbería.png');
 	height: 60rem;
 	background-size: cover;
@@ -209,7 +238,7 @@ html {
 
 
 .content-banner p {
-	color: var(--primary-color);
+	color: #5c2cdd;
 	font-size: 1.2rem;
 	margin-bottom: 1rem;
 	font-weight: 500;
@@ -226,7 +255,7 @@ html {
 	margin-top: 2rem;
 	text-decoration: none;
 	color: #fff;
-	background-color: var(--primary-color);
+	background-color: #5c2cdd;
 	display: inline-block;
 	padding: 1rem 3rem;
 	text-transform: uppercase;
@@ -239,6 +268,18 @@ html {
 	background-color: #eeeffc;
 }
 
+/* SERVICIOS ---*/
+.titulo-servicioss {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 2rem 0;
+}
+
 
 /* features */
 .container-features {
@@ -247,6 +288,7 @@ html {
 	gap: 3rem;
 	padding: 3rem 0;
 }
+
 .card-feature {
 	display: flex;
 	align-items: center;
@@ -256,6 +298,46 @@ html {
 	background-color: #ffffff;
 	border-radius: 1rem;
 	padding: 1.5rem 0;
+	cursor: pointer;
+
+	/* Transición suave para todo */
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-feature {
+  /* ...tu código anterior... */
+  cursor: default; /* <- hace que el cursor NO parezca clickeable */
+}
+/* Efecto al pasar el mouse */
+.card-feature:hover {
+	background-color: #c6b6f3; /* Color de fondo al pasar el mouse (puedes cambiarlo) */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid #4e00c2;
+  
+}
+
+/* DESAPARECER EL MOUSE */
+.card-feature,
+.card-feature * {
+  cursor: none;
+}
+
+
+.card-feature:hover .feature-content p {
+	color: #4e00c2; /* también puede ser un gris más oscuro si prefieres */
+}
+
+/* Estilo del ícono */
+.card-feature i {
+	font-size: 2.7rem;
+	color: var(--primary-color);
+	transition: transform 0.3s ease; /* Transición suave al hacer zoom */
+}
+
+/* Efecto en el ícono al pasar el mouse */
+.card-feature:hover i {
+	transform: scale(1.2); /* Aumenta ligeramente el tamaño del ícono */
+  color: #4d21eb;
 }
 
 .card-feature i {
@@ -303,14 +385,58 @@ html {
 }
 
 .card-cut {
-	height: 20rem;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	border-radius: 2rem;
-	gap: 2rem;
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  gap: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
 }
+
+/* Animación al pasar el mouse */
+.card-cut:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Texto principal */
+.card-cut p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* Subtítulo "Ver más" */
+.card-cut span {
+  font-size: 1rem;
+  color: #7a57f4;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Flechita animada */
+.card-cut span::after {
+  content: ' →';
+  opacity: 0;
+  margin-left: 0.2rem;
+  transition: opacity 0.3s ease, margin-left 0.3s ease;
+}
+
+/* Efecto en hover */
+.card-cut:hover span::after {
+  opacity: 1;
+  margin-left: 0.6rem;
+}
+
 
 .cut-taper{
     background-image: linear-gradient(#00000080, #000000af),
@@ -367,10 +493,19 @@ html {
 }
 
 .card-cut span:hover {
-	color: #b6a5f5;
+	color: #cabbff;
 }
 
+/* CAMBIAR COLOR AL TEXTO --- SPAN */
 
+
+#detalleTaper,
+#detalleMod,
+#detalleMiddle {
+    background: linear-gradient(to right, #6218eb, #000000);
+    color: #111; /* texto negro */
+    padding: 3rem 1.5rem;
+} 
 /* CORTES */
 
 .top-corte {
@@ -400,6 +535,7 @@ html {
 .container-options span:hover {
 	background-color: #4116db;
 	color: #fff;
+  border: 0.5px solid #000000;
 }
 
 .container-options span.active {
@@ -564,6 +700,41 @@ html {
 	color: #777;
 	margin-left: 0.5rem;
 }
+
+/*-- CARRUSEL */
+
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.card-corte {
+  flex: 0 0 auto;
+  width: 250px; /* Ajusta según tu diseño */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
 
 /*----------- GALLERY ---------*/
 
@@ -1415,4 +1586,337 @@ html {
 .turno.reservado {
   background-color: #4CAF50;
   color: white;
+} 
+
+#btn-limpiar {
+  left: 2rem;       /* A la izquierda */
+  bottom: 2rem;     /* Abajo */
+  z-index: 9999;
+
+  padding: 1rem 3rem;
+  background-color: #4116db;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#btn-limpiar:hover {
+  background-color: black;
+  transform: scale(1.05);
+}
+
+
+#infoOculta {
+  transition: all 0.5s ease;
+}
+
+#btnMostrarInfo {
+  background-color: #a9a2f8; /* lila suave */
+  border: 1.5px solid black;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #000000;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+#btnMostrarInfo:hover {
+  background-color: #4116db; 
+  color: white;
+}
+
+#infoEmpresa {
+  background: linear-gradient(135deg, #551af8, #000000); 
+  padding: 40px 20px;
+  transition: all 0.5s ease;
+}
+
+.empresa-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.info-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.texto-empresa {
+  flex: 2; /* Toma más espacio */
+  min-width: 300px;
+}
+
+.texto-empresa h2 {
+  font-size: 5rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.texto-empresa p {
+  font-size: 1.4rem; /* Texto más grande */
+  color: #ffffff;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.imagen-empresa {
+  flex: 1; /* Menos espacio */
+  min-width: 250px;
+  text-align: center;
+}
+
+.imagen-empresa img {
+  width: 100%;
+  max-width: 280px; /* Imagen más pequeña */
+  border-radius: 15px;
+}
+
+
+/* Separador */
+
+/* Rectángulo separador vertical */
+.separador-recto {
+  display: flex;
+  margin-left: -10px;
+  width: 10px;
+  height: 300px;
+  background-color: #e6e6f8;
+  border-radius: 10px;
+}
+
+
+/* PRODCUTOS CARRUSEL */
+
+.productos-barberia {
+  padding: 20px;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.productos-titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.invisible {
+  color: transparent;
+}
+
+.carrusel-productos {
+  overflow: hidden;
+  position: relative;
+  width: 60%;          /* ✅ Solo ocupa el 80% del ancho de la pantalla */
+  margin: 0 auto;      /* ✅ Centra el carrusel horizontalmente */
+}
+
+.pista-productos {
+  display: flex;
+  width: fit-content; /* ✅ Muy importante para que no recorte tarjetas */
+  animation: deslizar-productos 6s linear infinite;
+}
+
+.productos-barberia:hover .pista-productos {
+  animation-play-state: paused;
+}
+
+@keyframes deslizar-productos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tarjeta-producto {
+  min-width: 260px;
+  max-width: 260px;
+  height: 320px;
+  margin: 0 15px;
+  background: #e0d5ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.tarjeta-img {
+  position: relative;
+  height: 200px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+}
+
+.tarjeta-img img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.tarjeta-descuento {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(18%);
+  background: rgb(182, 106, 121);
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.tarjeta-botones {
+  position: absolute;
+  bottom: 10px;
+  right: 25%;
+  display: flex;
+  gap: 5px;
+}
+
+.tarjeta-botones span {
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.tarjeta-contenido {
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+}
+
+.tarjeta-estrellas {
+  color: gold;
+  margin-top: 12px;
+}
+
+.tarjeta-contenido h3 {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.tarjeta-carrito {
+  font-size: 1.2rem;
+  color: #444;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tarjeta-precio {
+  font-weight: bold;
+  margin: 0;
+}
+
+.tarjeta-precio span {
+  color: gray;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+
+
+.notificacion-carrito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745; /* Verde éxito */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {opacity: 0; transform: translateY(-20px);}
+  10% {opacity: 1; transform: translateY(0);}
+  90% {opacity: 1;}
+  100% {opacity: 0; transform: translateY(-20px);}
+}
+
+
+.cart-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1ab63e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+}
+
+.usuario-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.usuario-contenedor i {
+  font-size: 24px; /* Puedes ajustar el tamaño del ícono */
+}
+
+#nombreUsuario {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #000000; /* Cambia si tienes fondo oscuro */
+  text-align: center;
+}
+
+
+/*---*/
+
+#btnScrollTop {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 14px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+#btnScrollTop:hover {
+  background-color: #444;
 }
