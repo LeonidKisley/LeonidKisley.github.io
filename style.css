@@ -1900,6 +1900,7 @@ content-customer-support {
 
 /*---*/
 
+
 #btnScrollTop {
   position: fixed;
   bottom: 25px;
@@ -1913,7 +1914,10 @@ content-customer-support {
   font-size: 1.2rem;
   cursor: pointer;
   display: none;
+
   box-shadow: 0 4px 8px #4116db;
+
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
   transition: background-color 0.3s ease;
 }
 
