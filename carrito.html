@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Carrito de Compras</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <style>
+
+ cart-header,
+.cart-item {
+  display: flex;
+  align-items: center;
+}
+
+/* Encabezado */
+.cart-header {
+  padding: 8px 0;
+  font-weight: bold;
+  border-bottom: 2px solid #ccc;
+  margin-bottom: 8px;
+}
+
+/* Fila */
+.cart-item {
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+/* Imagen: fijo y alineado */
+.col-img {
+  flex: 0 0 60px;
+  display: flex;
+  justify-content: center;
+}
+.col-img img {
+  width: 48px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+/* Nombre: el que “crece” para separar */
+.col-name {
+  flex: 1;             /* Aquí está la clave: ocupa todo el espacio sobrante */
+  padding: 0 16px;     /* Un poco de espacio a izquierda/derecha */
+}
+
+/* Precio: fijo y alineado a la derecha */
+.col-price {
+  flex: 0 0 100px;
+  text-align: right;
+}
+
+/* Borrar: fijo */
+.col-del {
+  flex: 0 0 40px;
+  text-align: center;
+}
+
+/* BOTONES FINALIZA COMPRA */
+
+#checkout-btn {
+  display: inline-block;
+  padding: 1rem 2rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  background-color: #4719df;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-top: 1rem;
+}
+#checkout-btn:hover {
+  background-color: #18122b;       /* Variante más oscura */
+}
+
+#checkout-btn:active {
+  transform: scale(0.98);
+}
+
+.checkout-container {
+  display: flex;
+  justify-content: flex-start; /* Lo alinea a la izquierda */
+  padding-left: 990px;          /* Opcional: agrega espacio desde el borde */
+  margin-top: 2rem;            /* Separa del contenido superior */
+}
+
+/**************************/
+.item-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+}
+
+.item-info img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.item-name {
+  font-weight: bold;
+  font-size: 1.6rem; /* Aumenta según tu preferencia */
+}
+
+.item-price {
+  width: 80px;
+  text-align: right;
+  font-weight: bold;
+  font-size: 1.6rem; /* Aumenta igual que el nombre */
+}
+    :root {
+      --primary-color: #8567f1;
+      --background-color: #eeeeff;
+      --dark-color: #000000;
+      --light-color: #eeeeff;
+    }
+
+    html {
+      font-size: 62.5%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-image: linear-gradient(100deg, #000000, #00000041),
+		url('img/FondoBarbería.png');
+    }
+
+    .container {
+      max-width: 120rem;
+      margin: 0 auto;
+    }
+
+    .container-hero {
+      background-color: var(--background-color);
+    }
+
+    .hero {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 0;
+    }
+
+    .content-customer-support {
+      text-decoration: none;
+      color: #7e57c2;
+      text-align: center;
+      display: inline-block;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .content-customer-support i {
+      font-size: 2.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content-customer-support .text,
+    .content-customer-support .number {
+      display: block;
+      font-size: 1.2rem;
+    }
+
+    .container-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .logo-img {
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: black;
+    }
+
+    .container-user {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      cursor: pointer;
+    }
+
+    .container-user i {
+      font-size: 3rem;
+      color: #5c2cdd;
+    }
+
+    .content-shopping-cart {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.3rem;
+      font-weight: 600;
+    }
+
+    .container-navbar {
+      background-color: black;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+
+    .menu {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .menu li {
+      list-style: none;
+    }
+
+    .menu a {
+      text-decoration: none;
+      font-size: 1.3rem;
+      color: var(--light-color);
+      font-weight: 600;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .menu a::after {
+      content: '';
+      width: 1.5rem;
+      height: 1px;
+      background-color:#5c2cdd;
+      position: absolute;
+      bottom: -3px;
+      left: 50%;
+      transform: translate(-50%,50%);
+      opacity: 0;
+      transition: all .3s ease;
+    }
+
+    .menu a:hover::after {
+      opacity: 1;
+    }
+
+    .menu a:hover {
+      color: #5c2cdd;
+    }
+
+    .search-form {
+      position: relative;
+      display: flex;
+      align-items: center;
+      border: 2px solid #fff;
+      border-radius: 2rem;
+      background-color: #fff;
+      height: 4.4rem;
+      overflow: hidden;
+    }
+
+    .search-form input {
+      outline: none;
+      font-family: inherit;
+      border: none;
+      width: 25rem;
+      font-size: 1.4rem;
+      padding: 0 2rem;
+      color: #070707;
+      cursor: pointer;
+    }
+
+    .search-form .btn-search {
+      border: none;
+      background-color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      padding: 1rem;
+    }
+
+    .btn-search i {
+      font-size: 2rem;
+      color: #eeeeff;
+    }
+
+    main.carrito-contenido {
+      padding: 4rem 2rem;
+      background-color: white;
+      border-radius: 2rem;
+      margin-top: 4rem;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    main h2 {
+      font-size: 2.8rem;
+      color: #5c2cdd;
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+/* Contenedor de total + botón finalizar */
+.resumen-carrito {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;  /* ← Esto alinea TODO a la izquierda */
+  margin-top: 2rem;
+  padding-left: 2rem;       /* Opcional: un poco de espacio desde el borde */
+  gap: 1rem;
+}
+
+.resumen-carrito p {
+  font-size: 2rem;          /* Letra más grande */
+  font-weight: bold;
+  margin: 0;
+  text-align: right;         /* ← Esto asegura que el texto esté alineado */
+  width: 100%;              /* ← Importante si el texto está dentro de un contenedor más grande */
+}
+
+.total-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* Precio total */
+.total-info p {
+  font-size: 1.8rem;
+  color: #000;
+}
+
+/* Botón de vaciar carrito */
+.acciones-superiores {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+#clear-cart-btn {
+  margin-top: -150px;
+  background-color: #2b0905;
+  color: white;
+  border: none;
+  padding: 0.9rem 1.8rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#clear-cart-btn:hover {
+    background-color: #570e05;
+  }
+
+
+
+  </style>
+
+
+
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container-hero">
+      <div class="container hero">
+        <div class="customer-support">
+          <a href="https://wa.me/51946066504" target="_blank" class="content-customer-support" style="text-decoration: none; color: inherit;">
+            <div style="text-align: center;">
+              <i class="fa-solid fa-headset"></i><br>
+              <span class="text">Soporte al cliente</span>
+              <span class="number">900070069</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="container-logo">
+          <a href="/">
+            <img src="img/Logo_Trans.png" alt="Logo Baristas" class="logo-img">
+          </a>
+          <h1 class="logo">Happy Group</h1>
+        </div>
+
+        <div class="container-user">
+          <a href="login.html">
+            <i class="fa-solid fa-user"></i>
+          </a>
+          <i class="fa-solid fa-basket-shopping"></i>
+          <div class="content-shopping-cart">
+            <span class="text">Carrito</span>
+            <span class="number" id="cart-count">(0)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-navbar">
+      <nav class="navbar container">
+        <i class="fa-solid fa-bars"></i>
+        <ul class="menu">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Servicios</a></li>
+          <li><a href="#">Agenda tu cita</a></li>
+          <li><a href="#">Promociones</a></li>
+          <li><a href="#">Productos</a></li>
+          <li><a href="#">Ubícanos</a></li>
+        </ul>
+        <form class="search-form">
+          <input type="search" placeholder="Buscar...">
+          <button class="btn-search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CARRITO -->
+  <main class="container carrito-contenido">
+    <h2>🛒 Carrito de Compras</h2>
+    <div class="cart-header" style="display:flex; padding:10px 0; font-weight:bold; border-bottom:2px solid #ccc;">
+            <div class="col-img"   style="width:60px;">Imagen</div>
+            <div class="col-name"  style="flex:1; padding-left:10px;">Producto</div>
+            <div class="col-price" style="width:100px; text-align:right;">Precio</div>
+            <div class="col-del"   style="width:40px;"></div>
+            </div>
+    <div style="position: relative; top: -40px;">
+  <button id="clear-cart-btn" style="
+    background: #cf2512;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.2rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 1000px;
+  ">🗑 Vaciar carrito</button>
+</div>
+</div>
+    <div id="cart-items"></div>
+    <div class="resumen-carrito">
+      <p><strong>Total:</strong> <span id="cart-total">S/ 0.00</span></p>
+      <div class="checkout-container">
+        <button id="checkout-btn">Finalizar compra</button>
+    </div>
+    </div>
+  </main>
+
+  <!-- JS -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Leer carrito
+  const raw = localStorage.getItem('cart');
+  const cart = raw ? JSON.parse(raw) : [];
+
+  // 2. Referencias
+  const container = document.getElementById('cart-items');
+  const totalEl   = document.getElementById('cart-total');
+  const counter   = document.getElementById('cart-count');
+  const checkout  = document.getElementById('checkout-btn');
+
+  // 3. Limpiar contenedor
+  container.innerHTML = '';
+
+  // 4. Si vacío
+  if (cart.length === 0) {
+    container.innerHTML = '<p style="text-align: center;">Tu carrito está vacío.</p>';
+    if (counter) counter.textContent = '(0)';
+    return;
+  }
+
+// 5. Mostrar cada producto
+let sum = 0;
+cart.forEach((item, idx) => {
+  const imgSrc = item.img || 'img/default.png';
+  const price  = parseFloat(item.price) || 0;
+
+  const row = document.createElement('div');
+  row.classList.add('cart-item');
+  row.innerHTML = `
+    <div class="item-info" style="display:flex; align-items:center; gap:10px; flex:1;">
+      <img src="${imgSrc}" alt="${item.name}" style="width:50px; height:50px; object-fit:cover; border-radius:5px;">
+      <span class="item-name" style="font-weight:bold;">${item.name}</span>
+    </div>
+    <div class="item-price" style="width:80px; text-align:right; font-weight:bold;">
+      S/ ${price.toFixed(2)}
+    </div>
+    <!-- Botón para borrar este ítem -->
+    <button class="delete-item" data-index="${idx}" style="
+      background: transparent;
+      border: none;
+      font-size: 1.2rem;
+      color: #e74c3c;
+      cursor: pointer;
+    ">✖</button>
+  `;
+  container.appendChild(row);
+  sum += price;
+});
+
+// 6. Eliminar un solo ítem
+container.addEventListener('click', e => {
+  if (!e.target.matches('.delete-item')) return;
+  const idx = parseInt(e.target.dataset.index, 10);
+  const cartArr = JSON.parse(localStorage.getItem('cart')) || [];
+  cartArr.splice(idx, 1);
+  localStorage.setItem('cart', JSON.stringify(cartArr));
+  // Recarga para actualizar la vista
+  location.reload();
+});
+
+
+  // 6. Total y contador
+  totalEl.textContent = 'S/ ' + sum.toFixed(2);
+  if (counter) counter.textContent = `(${cart.length})`;
+
+   const clearCartBtn = document.getElementById('clear-cart-btn');
+  if (clearCartBtn) {
+    clearCartBtn.addEventListener('click', () => {
+      if (!confirm('¿Vaciar todo el carrito?')) return;
+
+      // 1. Borrar el storage
+      localStorage.removeItem('cart');
+
+      // 2. Limpiar el contenedor y mostrar mensaje vacío
+      container.innerHTML = '<p style="text-align: center;">Tu carrito está vacío.</p>';
+
+      // 3. Resetear totales
+      totalEl.textContent = 'S/ 0.00';
+      if (counter) counter.textContent = '(0)';
+    });
+  }
+
+
+  // 7. Finalizar compra
+  if (checkout) {
+    checkout.addEventListener('click', () => {
+      if (cart.length === 0) {
+        alert('Tu carrito está vacío.');
+        return;
+      }
+      localStorage.removeItem('cart');
+      window.location.href = 'pago.html';
+    });
+  }
+});
+
+
+
+
+</script>
+
+
+</body>
+</html>

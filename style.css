@@ -1,0 +1,1922 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-color: #8567f1;
+    --background-color: #eeeeff;
+    --dark-color: #000000;
+    --light-color: #eeeeff;
+}
+
+html {
+    font-size: 62.5%;
+    font-family: 'Poppins', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* UTILIDADES */
+.container {
+    max-width: 120rem;
+    margin: 0 auto;
+}
+
+/* HEADER */
+.container-hero {
+    background-color: var(--background-color);
+}
+
+.hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+/* CUSTOMER SUPPORT */
+content-customer-support {
+    text-decoration: none;
+    color: #7e57c2; /* Morado por defecto */
+    text-align: center;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.content-customer-support i {
+    font-size: 24px;
+    margin-bottom: 5px;
+    display: block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.content-customer-support .text,
+.content-customer-support .number {
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.content-customer-support:hover {
+    color: #5c2cdd; /* Morado más claro al pasar el mouse */
+    transform: scale(1.1); /* Aumenta el tamaño */
+}
+
+.content-customer-support:hover i {
+    color: #5c2cdd;
+    transform: scale(1.2);
+}
+
+
+/*¨Texto se agraden cuando se pase el mouse */
+.content-customer-support:hover .text,
+.content-customer-support:hover .number {
+    font-weight: bold; /* Negrita en hover */
+    color: #5c2cdd;
+}
+
+/* LOGO DE LA BARBERÍA */
+
+
+
+.container-logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo-img {
+    height: 60px;
+    width: auto;
+    object-fit: contain;
+}
+
+.logo {
+    font-size: 2.5rem;
+    color: black;
+}
+
+.container-user{
+    display: flex;
+    gap: 1rem;
+    cursor: pointer;  
+}
+
+.container-user .fa-user {
+	font-size: 3rem;
+	color: #5c2cdd;
+	padding-right: 2.5rem;
+	border-right: 1px solid #e2e2e2;
+}
+
+.container-user .fa-basket-shopping{
+    font-size: 3rem;
+    color: #5c2cdd;
+    padding-left: 1rem;
+}
+
+.content-shopping-cart{
+    display: flex;
+    flex-direction: column;
+}
+
+/**    NAVBAR     **/
+.container-navbar{
+    background-color: black; 
+}
+
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+.navbar .fa-bars{
+    display: none;
+}
+.menu{
+    display: flex;
+    gap: 2rem;
+}
+
+.menu li{
+    list-style: none;
+}
+
+.menu a{
+    text-decoration: none;
+    font-size: 1.3rem;
+    color: var(--light-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    position: relative;
+}
+
+.menu a::after{
+    content: '';
+    width: 1.5rem;
+    height: 1px;
+    background-color:#5c2cdd;
+    position: absolute;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%,50%);
+    opacity: 0;
+    transition: all .3s ease;
+}
+
+.menu a:hover::after{
+    opacity: 1;
+}
+
+.menu a:hover{
+    color: #5c2cdd;
+}
+
+
+/* BUSCADOR */
+.search-form{
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 2px solid #fff;
+    border-radius: 2rem;
+    background-color: #fff;
+    height: 4.4rem;
+    overflow: hidden;
+}
+
+.search-form input{
+    outline: none;
+    font-family: inherit;
+    border: none;
+    width: 25rem;
+    font-size: 1.4rem;
+    padding: 0 2rem;
+    color: #070707;
+    cursor: pointer;
+}
+
+.search-form input::-webkit-search-cancel-button{
+    appearance: none;
+
+}
+
+.search-form .btn-search{
+    border: none;
+    background-color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 1rem;
+}
+.btn-search i{
+    font-size: 2rem;
+    color: #eeeeff;
+}
+
+/* *************************** */
+/*          BANNER             */
+/* *************************** */
+
+.banner {
+	background-image: linear-gradient(100deg, #000000, #00000041),
+		url('img/FondoBarbería.png');
+	height: 60rem;
+	background-size: cover;
+	background-position: center;
+}
+
+.content-banner {
+	max-width: 100rem;
+	margin: 0 auto;
+	padding: 20rem 0;
+}
+
+
+.content-banner p {
+	color: #5c2cdd;
+	font-size: 1.2rem;
+	margin-bottom: 1rem;
+	font-weight: 500;
+}
+
+.content-banner h2 {
+	color: #fff;
+	font-size: 3.5rem;
+	font-weight: 500;
+	line-height: 1.2;
+}
+
+.content-banner a {
+	margin-top: 2rem;
+	text-decoration: none;
+	color: #fff;
+	background-color: #5c2cdd;
+	display: inline-block;
+	padding: 1rem 3rem;
+	text-transform: uppercase;
+	border-radius: 3rem;
+}
+
+/* main content*/
+
+.main-content {
+	background-color: #eeeffc;
+}
+
+/* SERVICIOS ---*/
+.titulo-servicioss {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 5rem;
+  font-weight: 600;
+  color: #000000;
+  margin: 2rem 0;
+}
+
+
+/* features */
+.container-features {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	gap: 3rem;
+	padding: 3rem 0;
+}
+
+.card-feature {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1.5rem;
+
+	background-color: #ffffff;
+	border-radius: 1rem;
+	padding: 1.5rem 0;
+	cursor: pointer;
+
+	/* Transición suave para todo */
+	transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.card-feature {
+  /* ...tu código anterior... */
+  cursor: default; /* <- hace que el cursor NO parezca clickeable */
+}
+/* Efecto al pasar el mouse */
+.card-feature:hover {
+	background-color: #c6b6f3; /* Color de fondo al pasar el mouse (puedes cambiarlo) */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border: 1.5px solid #4e00c2;
+  
+}
+
+/* DESAPARECER EL MOUSE */
+.card-feature,
+.card-feature * {
+  cursor: none;
+}
+
+
+.card-feature:hover .feature-content p {
+	color: #4e00c2; /* también puede ser un gris más oscuro si prefieres */
+}
+
+/* Estilo del ícono */
+.card-feature i {
+	font-size: 2.7rem;
+	color: var(--primary-color);
+	transition: transform 0.3s ease; /* Transición suave al hacer zoom */
+}
+
+/* Efecto en el ícono al pasar el mouse */
+.card-feature:hover i {
+	transform: scale(1.2); /* Aumenta ligeramente el tamaño del ícono */
+  color: #4d21eb;
+}
+
+.card-feature i {
+	font-size: 2.7rem;
+	color: var(--primary-color);
+}
+
+.feature-content {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.feature-content span {
+	font-weight: 700;
+	font-size: 1.2rem;
+	color: var(--dark-color);
+}
+
+.feature-content p {
+	color: #777;
+	font-weight: 500;
+}
+
+
+
+/* ********************************** */
+/*             CATEGORIES             */
+/* ********************************** */
+.heading-1 {
+    font-size: 2.5rem; /* Aumenta el número para hacerlo más grande */
+    font-weight: bold; /* Opcional: para hacerlo más llamativo */
+} 
+.top-cuts {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.container-cuts {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3rem;
+}
+
+.card-cut {
+  height: 20rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2rem;
+  gap: 2rem;
+  background-color: #fff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: default;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animación al pasar el mouse */
+.card-cut:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Texto principal */
+.card-cut p {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+/* Subtítulo "Ver más" */
+.card-cut span {
+  font-size: 1rem;
+  color: #7a57f4;
+  font-weight: 600;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+/* Flechita animada */
+.card-cut span::after {
+  content: ' →';
+  opacity: 0;
+  margin-left: 0.2rem;
+  transition: opacity 0.3s ease, margin-left 0.3s ease;
+}
+
+/* Efecto en hover */
+.card-cut:hover span::after {
+  opacity: 1;
+  margin-left: 0.6rem;
+}
+
+
+.cut-taper{
+    background-image: linear-gradient(#00000080, #000000af),
+		url('img/TF.jpg');
+	background-size: cover;
+	background-position: bottom;
+	background-repeat: no-repeat;
+}
+
+.cut-modcut{
+    background-image: linear-gradient(#00000080, #000000b9),
+		url('img/MC.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.cut-Middel{
+    	background-image: linear-gradient(#00000080, #000000af),
+		url('img/MDP.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.card-cut p{
+    font-size: 2.5rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    position: relative;
+}
+
+.card-cut p::after {
+	content: '';
+	width: 2.5rem;
+	height: 2px;
+	background-color: #fff;
+	position: absolute;
+	bottom: -1rem;
+	left: 50%;
+	transform: translate(-50%, 50%);
+}
+
+.card-cut span{
+    font-size: 1.6rem;
+	color: #fff;
+	cursor: pointer;
+}
+
+.card-cut span {
+	font-size: 1.6rem;
+	color: #fff;
+	cursor: pointer;
+}
+
+.card-cut span:hover {
+	color: #cabbff;
+}
+
+/* CAMBIAR COLOR AL TEXTO --- SPAN */
+
+
+#detalleTaper,
+#detalleMod,
+#detalleMiddle {
+    background: linear-gradient(to right, #6218eb, #000000);
+    color: #111; /* texto negro */
+    padding: 3rem 1.5rem;
+} 
+/* CORTES */
+
+.top-corte {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.container-options {
+	display: flex;
+	justify-content: center;
+	gap: 2rem;
+	margin-bottom: 1rem;
+}
+
+.container-options span {
+	color: #fff;
+	background-color: #8567f1;
+	padding: 0.7rem 3rem;
+	font-size: 1.4rem;
+	text-transform: capitalize;
+	border-radius: 2rem;
+	cursor: pointer;
+}
+
+.container-options span:hover {
+	background-color: #4116db;
+	color: #fff;
+  border: 0.5px solid #000000;
+}
+
+.container-options span.active {
+	background-color: #4116db;
+	color: #fff;
+}
+
+/* Cortes */
+.container-corte {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+	gap: 3rem;
+}
+
+.card-corte {
+	background-color: #fff;
+	padding: 2rem 3rem;
+	border-radius: 1rem;
+	cursor: pointer;
+	box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.container-img {
+	position: relative;
+}
+
+.container-img img {
+	width: 80%;
+}
+
+
+.container-img .discount {
+	position: absolute;
+	left: 0;
+	background-color: var(--primary-color);
+	color: #fff;
+	padding: 2px 1.2rem;
+	border-radius: 1rem;
+	font-size: 1.2rem;
+}
+
+.card-corte:hover .discount {
+	background-color: #000;
+}
+
+.button-group {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+
+	position: absolute;
+	top: 0;
+	right: -3rem;
+	z-index: -1;
+	transition: all 0.4s ease;
+}
+
+.button-group span {
+	border: 1px solid var(--primary-color);
+	padding: 0.8rem;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+}
+
+.button-group span:hover {
+	background-color: var(--primary-color);
+}
+
+.button-group span i {
+	font-size: 1.5rem;
+	color: var(--primary-color);
+}
+
+.button-group span:hover i {
+	color: #fff;
+}
+
+
+.card-corte:hover .button-group {
+	z-index: 0;
+	right: -1rem;
+}
+
+.content-card-corte {
+	display: grid;
+	justify-items: center;
+	grid-template-columns: 1fr 1fr;
+	grid-template-rows: repeat(4, min-content);
+	row-gap: 1rem;
+}
+
+.stars {
+	grid-row: 1/2;
+	grid-column: 1/-1;
+}
+
+
+.stars i {
+	font-size: 1.3rem;
+	color: var(--primary-color);
+}
+
+.content-card-corte h3 {
+	grid-row: 2/3;
+	grid-column: 1/-1;
+
+	font-weight: 400;
+	font-size: 1.6rem;
+	margin-bottom: 1rem;
+	cursor: pointer;
+}
+
+.content-card-corte h3:hover {
+	color: var(--primary-color);
+}
+
+
+.add-cart {
+	justify-self: start;
+	border: 2px solid var(--primary-color);
+	padding: 1rem;
+	border-radius: 50%;
+	cursor: pointer;
+	transition: all 0.4s ease;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.add-cart:hover {
+	background-color: var(--primary-color);
+}
+
+.add-cart i {
+	font-size: 1.5rem;
+	color: var(--primary-color);
+}
+
+.add-cart:hover i {
+	color: #fff;
+}
+
+
+.content-card-corte .price {
+	justify-self: end;
+	align-self: center;
+
+	font-size: 1.2rem;
+	font-weight: 600;
+}
+
+.content-card-corte .price span {
+	font-size: 1.2rem;
+	font-weight: 400;
+	text-decoration: line-through;
+	color: #777;
+	margin-left: 0.5rem;
+}
+
+/*-- CARRUSEL */
+
+.carousel-wrapper {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+.card-corte {
+  flex: 0 0 auto;
+  width: 250px; /* Ajusta según tu diseño */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.carousel-wrapper:hover .carousel-track {
+  animation-play-state: paused;
+}
+
+
+/*----------- GALLERY ---------*/
+
+.gallery {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(2, 30rem);
+	gap: 1.5rem;
+	margin-bottom: 3rem;
+}
+
+.gallery img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.gallery-img-3 {
+	grid-column: 2/4;
+	grid-row: 1/3;
+}
+
+
+/** Otros servicios **/
+.container-especiales {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+	margin-bottom: 3rem;
+}
+
+.servicio-Destacados img {
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 40px;
+}
+
+.servicio-Destacados2 {
+    position: relative;
+    overflow: hidden; /* evita que se "desborde" visualmente */
+}
+
+.servicio-Destacados2 img {
+    width: 110%;
+    margin-top: 20px;
+    margin-left: -10px;
+    border-radius: 12px;
+    display: block;
+    transition: 0.3s ease;
+}
+
+.servicio-Destacados3 img {
+    width: 115%;
+    margin-top: 5px;
+    margin-left: -10px;
+    border-radius: 12px;
+    display: block;
+    transition: 0.3s ease;
+}
+.discount {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #cdbff0;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    z-index: 2;
+}
+
+.heading-1 {
+    text-align: center;
+	font-size: 4rem;
+}
+
+.heading-1 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    font-weight: 600; /* más gruesa */
+}
+
+.heading-2 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+	margin-top: -2rem;
+	margin-bottom: 3rem;
+    font-weight: 100; /* más gruesa */
+}
+.container-especiales {
+    background-color: #e7dbff; /* gris claro, cambia por el que desees */
+    padding: 40px 0;
+}
+
+/* BARBERO HEADING */
+.hero-barbero {
+  background-image: url('img/Barbero---Photoroom.png'); /* tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* efecto parallax */
+  position: relative;
+  height: 20vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-barbero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
+  z-index: 1;
+}
+
+.overlay-texto {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.overlay-texto h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.overlay-texto p {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* PROMOS */
+.promo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.container-promo {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 3rem;
+}
+
+.card-promo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card-promo .container-img {
+  border-radius: 2rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.button-group-promo {
+  position: absolute;
+  bottom: 1.5rem;
+  right: -2.5rem;
+
+  display: flex;
+  gap: 0.7rem;
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.card-promo:hover .button-group-promo {
+  z-index: 0;
+  right: 1.5rem;
+}
+
+.button-group-promo span {
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-group-promo span i {
+  font-size: 1.3rem;
+}
+
+.button-group-promo span:hover {
+  background-color: #4116db;
+}
+
+.button-group-promo span:hover i {
+  color: #fff;
+}
+
+.content-promo h3 {
+  font-size: 1.8rem;
+  margin-bottom: 1.7rem;
+  color: var(--dark-color);
+  font-weight: 500;
+}
+
+.content-promo h3:hover {
+  color: #4116db;
+  cursor: pointer;
+}
+
+.content-promo p {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #777;
+}
+
+.content-promo span {
+  color: #4116db;
+  font-size: 1.3rem;
+}
+
+.btn-aprovechar {
+   padding: 1rem 3rem;
+  background-color: #4116db;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  margin: 3rem 0 5rem;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.btn-aprovechar:hover {
+   background-color: black;   /* Cambia a negro */
+  transform: scale(1.05);
+}
+
+
+.fecha-promocion i {
+  font-size: 1.3rem;
+}
+
+.fecha-promocion {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1.7rem;
+  font-size: 1.4rem;
+  color: #333;
+  margin-top: 1rem;
+}
+
+.texto-fecha {
+  line-height: 1.2;
+}
+
+.fecha-promocion i {
+  font-size: 3rem;
+  color: #5e42ff;
+}
+
+/*   logo calendario */
+.fa-calendar {
+  font-size: 1.5rem;              /* Tamaño inicial */
+  color: gray;                    /* Color inicial */
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.fa-calendar:hover {
+  transform: scale(1.1);          /* Agranda un 10% */
+  color: black;                   /* Cambia a negro */
+  cursor: pointer;                /* Cursor tipo mano */
+}
+
+/* descripción parrafos */
+.content-promo p {
+  margin-top: 1;
+  line-height: 0.5; /* Puedes ajustar este valor (1.2, 1.3, etc.) según qué tan junto lo quieras */
+}
+
+/* ---- BARBERO 2 ---- */
+.hero-barbero2 {
+  background-image: url('img/Barbero222.png'); /* tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* efecto parallax */
+  position: relative;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-barbero2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
+  z-index: 1;
+}
+
+.hero-barbero2 .overlay-texto {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-barbero2 .overlay-texto h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.hero-barbero2 .overlay-texto p {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+/* FOOTER */
+
+.footer {
+	background-color: #4116db;
+	color: #fff;
+}
+
+.container-footer {
+	display: flex;
+	flex-direction: column;
+	gap: 4rem;
+	padding: 3rem;
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.menu-footer {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr) 30rem;
+	gap: 3rem;
+	justify-items: center;
+}
+
+.title-footer {
+	font-weight: 600;
+	font-size: 1.6rem;
+	text-transform: uppercase;
+}
+
+.contact-info,
+.information,
+.my-account,
+.newsletter {
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+.contact-info ul,
+.information ul,
+.my-account ul {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	padding-left: 0;
+}
+
+.contact-info ul li,
+.information ul li,
+.my-account ul li {
+	list-style: none;
+	font-size: 1.4rem;
+	font-weight: 300;
+}
+
+.information ul li a,
+.my-account ul li a {
+	text-decoration: none;
+	color: #fff;
+	font-weight: 300;
+	transition: color 0.3s;
+}
+
+.information ul li a:hover,
+.my-account ul li a:hover {
+	color: #d2b495;
+}
+
+.social-icons {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.social-icons span {
+	border-radius: 50%;
+	width: 3rem;
+	height: 3rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.social-icons span i {
+	color: #fff;
+	font-size: 1.2rem;
+}
+
+.facebook {
+	background-color: #3b5998;
+}
+
+.twitter {
+	background-color: #00acee;
+}
+
+.youtube {
+	background-color: #c4302b;
+}
+
+.pinterest {
+	background-color: #c8232c;
+}
+
+.instagram {
+	background: linear-gradient(
+		#405de6,
+		#833ab4,
+		#c13584,
+		#e1306c,
+		#fd1d1d,
+		#f56040,
+		#fcaf45
+	);
+}
+
+.content p {
+	font-size: 1.4rem;
+	font-weight: 300;
+}
+
+.content input {
+	outline: none;
+	background: none;
+	border: none;
+	border-bottom: 2px solid #d2b495;
+	cursor: pointer;
+	padding: 0.5rem 0 1.2rem;
+	color: #fff;
+	margin-bottom: 3rem;
+	margin-top: 2rem;
+	width: 100%;
+	font-family: inherit;
+}
+
+.content input::placeholder {
+	color: #eee;
+}
+
+.content button {
+	border: none;
+	background-color: #000;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 1rem 3rem;
+	border-radius: 2rem;
+	font-size: 1.4rem;
+	font-family: inherit;
+	cursor: pointer;
+	font-weight: 600;
+	transition: background-color 0.3s, color 0.3s;
+}
+
+.content button:hover {
+	background-color: #fff;
+	color: #4116db;
+}
+
+.copyright {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding-top: 2rem;
+	border-top: 1px solid #d2b495;
+}
+
+.copyright p {
+	font-weight: 400;
+	font-size: 1.6rem;
+	margin: 0;
+}
+
+
+/* ---- BARBERO 3 ---- */
+.hero-barbero3 {
+  background-image: url('img/Modelo222.png'); /* tu imagen aquí */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* efecto parallax */
+  position: relative;
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.hero-barbero3::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* oscurece la imagen */
+  z-index: 1;
+}
+
+.hero-barbero3 .overlay-texto {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+  padding: 20px;
+}
+
+.hero-barbero3 .overlay-texto h2 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  font-family: 'Bebas Neue', sans-serif;
+}
+
+.hero-barbero3 .overlay-texto p {
+  font-size: 1.2rem;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* MAPA */
+
+.location-section {
+	background-color: #f7f7f7;
+	padding: 4rem 2rem;
+	width: 100%;
+}
+
+.container-location {
+	max-width: 1200px;
+	margin: 0 auto;
+	text-align: center;
+	padding-bottom: 4rem;
+}
+
+.location-title {
+	font-size: 2.4rem;
+	font-weight: 600;
+	color: #333;
+	margin-bottom: 1.5rem;
+}
+
+.location-description {
+  font-size: 1.6rem;
+  color: #555;
+  margin-bottom: 0.2rem; /* reduce el espacio entre párrafos */
+}
+
+.map-container {
+	border-radius: 10px;
+	overflow: hidden;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+	width: 100%;
+	
+	
+}
+
+
+.map-container iframe {
+	width: 100%;
+	height: 500px; /* Puedes ajustar este valor para hacerlo más alto */
+	border: none;
+	display: block;
+}
+
+.map-fullwidth {
+	width: 100vw;
+	margin: 0;
+	position: relative;
+	left: 50%;
+	right: 50%;
+	transform: translateX(-50%);
+}
+
+.map-fullwidth iframe {
+	width: 100%;
+	height: 500px;
+	border: none;
+	display: block;
+}
+
+
+.location-title {
+  font-size: 5rem; /* tamaño grande */
+  font-weight: 700;
+  color: #333;
+  margin-bottom: 0.5rem; /* menos espacio abajo para acercarlo al mapa */
+  margin-top: -1rem; /* sube el título un poco */
+  
+  display: flex;
+  align-items: center;
+  justify-content: center; /* centra horizontalmente */
+  gap: 1.5rem; /* espacio entre icono y texto */
+ 
+}
+
+.location-icon {
+  color: #4116db; /* color del ícono */
+  font-size: 3.5rem; /* tamaño del ícono */
+}
+
+
+/*Agenda tu cita */
+
+.appointment-section {
+  background-color: #f7f7f7;
+  padding: 4rem 2rem;
+}
+
+.container-appointment {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.appointment-title {
+  font-size: 2.4rem;
+  font-weight: 600;
+  color: #000000;
+  margin-bottom: 1rem;
+}
+
+/* Grid del horario */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: 100px repeat(6, 1fr);
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+/* Encabezados de columna (días) */
+.day-header {
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: #4116db; /* morado */
+  padding: 0.5rem;
+  text-align: center;
+}
+
+/* Primer columna (horas) */
+.time-label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #000000;
+  padding: 0.5rem;
+  text-align: right;
+}
+
+/* Casillas de los turnos */
+.slot {
+  background-color: #cfcbff; /* lila suave */
+  border: 1.5px solid black;
+  padding: 1rem 0;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #000000;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+/* Efecto hover para casillas no seleccionadas y no descanso */
+.slot:not(.selected):hover {
+  background-color: #4116db; /* morado intenso */
+  color: white;
+}
+
+/* Casillas de descanso */
+.slot.break {
+  background-color: transparent;
+  cursor: default;
+  font-style: italic;
+  color: #999;
+  border: none;
+}
+
+/* Casilla seleccionada */
+.slot.selected {
+  background-color: #4116db; /* morado intenso */
+  color: #fff;
+  border-color: #4116db;
+}
+
+
+/* Imagen fija al lado derecho, oculta inicialmente */
+.side-image {
+  position: fixed;
+  left: 2rem;           /* antes tenías right: 2rem */
+  right: auto;          /* desactivas right */
+  top: 30%;
+  width: 300px;
+  opacity: 0;
+  transform: translateX(-50px) rotate(10deg);  /* invertimos el translate y la rotación */
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  pointer-events: none;
+  z-index: 100;
+}
+
+.side-image.visible {
+  opacity: 1;
+  transform: translateX(0) rotate(0);
+}
+
+.side-image.exit {
+  opacity: 0;
+  transform: translateX(-50px) rotate(10deg);
+}
+
+/* CONTENEDOR DE SEDES */
+
+/* Contenedor de sedes */
+.branch-selector {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem; /* espacio antes del grid */
+}
+
+/* Botones de sede */
+.branch {
+  margin-top: 2rem;
+  background-color: #c4a8f1; /* lila suave */
+  border: 1px solid #000;
+  padding: 0.8rem 1.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+/* Hover idéntico al de .slot */
+.branch:not(.selected):hover {
+  background-color: #4116db; /* morado intenso */
+  color: #fff;
+}
+
+/* Sede seleccionada */
+.branch.selected {
+  background-color: #4116db;
+  color: #fff;
+  border-color: #4116db;
+}
+
+
+
+/* Grid horarios */
+.schedule-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Encabezados */
+.time-label, .day-header {
+  font-weight: bold;
+  background-color: #ebe9ff;
+  padding: 8px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #faf3f3;
+}
+
+/* Slots */
+.slot {
+  background-color: #e0e0e0;
+  border: 1px solid #aaa;
+  padding: 10px;
+  text-align: center;
+  border-radius: 6px;
+  cursor: pointer;
+  user-select: none;
+  font-weight: 600;
+  color: #000000;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Disponible */
+.slot[data-status="Disponible"] {
+  background-color: #c4a8f1;
+  border-color: #000;
+  color: #000000;
+}
+
+/* Hover para disponible */
+.slot[data-status="Disponible"]:hover {
+  background-color: #4116db;
+  color: #fff;
+}
+
+/* Reservado */
+.slot[data-status="Reservado"] {
+  background-color: #491414;
+  border-color: #5a1a1a;
+  color: #fff;
+  cursor: default;
+}
+
+/* Seleccionado */
+.slot.selected {
+  outline: 2.5px solid #511fe7;
+}
+
+/* Break */
+.break {
+  background-color: #f0f0f0;
+  color: #a4a1d6;
+  cursor: default;
+  font-style: italic;
+}
+
+.slot.reservado {
+  background-color: #f44336;
+  color: white;
+}
+
+.turno {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 5px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  user-select: none;
+}
+
+.turno.reservado {
+  background-color: #4CAF50;
+  color: white;
+} 
+
+#btn-limpiar {
+  left: 2rem;       /* A la izquierda */
+  bottom: 2rem;     /* Abajo */
+  z-index: 9999;
+
+  padding: 1rem 3rem;
+  background-color: #4116db;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  border-radius: 2rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#btn-limpiar:hover {
+  background-color: black;
+  transform: scale(1.05);
+}
+
+
+#infoOculta {
+  transition: all 0.5s ease;
+}
+
+#btnMostrarInfo {
+  background-color: #a9a2f8; /* lila suave */
+  border: 1.5px solid black;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #000000;
+  user-select: none;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.5rem;
+  margin-top: 1rem;
+}
+
+#btnMostrarInfo:hover {
+  background-color: #4116db; 
+  color: white;
+}
+
+#infoEmpresa {
+  background: linear-gradient(135deg, #551af8, #000000); 
+  padding: 40px 20px;
+  transition: all 0.5s ease;
+}
+
+.empresa-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+.info-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 40px;
+  justify-content: space-between;
+}
+
+.texto-empresa {
+  flex: 2; /* Toma más espacio */
+  min-width: 300px;
+}
+
+.texto-empresa h2 {
+  font-size: 5rem;
+  margin-bottom: 15px;
+  color: #ffffff;
+  text-align: left;
+}
+
+.texto-empresa p {
+  font-size: 1.4rem; /* Texto más grande */
+  color: #ffffff;
+  line-height: 1.7;
+  text-align: left;
+}
+
+.imagen-empresa {
+  flex: 1; /* Menos espacio */
+  min-width: 250px;
+  text-align: center;
+}
+
+.imagen-empresa img {
+  width: 100%;
+  max-width: 280px; /* Imagen más pequeña */
+  border-radius: 15px;
+}
+
+
+/* Separador */
+
+/* Rectángulo separador vertical */
+.separador-recto {
+  display: flex;
+  margin-left: -10px;
+  width: 10px;
+  height: 300px;
+  background-color: #e6e6f8;
+  border-radius: 10px;
+}
+
+
+/* PRODCUTOS CARRUSEL */
+
+.productos-barberia {
+  padding: 20px;
+  background: #f9f9f9;
+  overflow: hidden;
+}
+
+.productos-titulo {
+  text-align: center;
+  font-size: 2rem;
+  margin: 10px 0;
+}
+
+.invisible {
+  color: transparent;
+}
+
+.carrusel-productos {
+  overflow: hidden;
+  position: relative;
+  width: 60%;          /* ✅ Solo ocupa el 80% del ancho de la pantalla */
+  margin: 0 auto;      /* ✅ Centra el carrusel horizontalmente */
+}
+
+.pista-productos {
+  display: flex;
+  width: fit-content; /* ✅ Muy importante para que no recorte tarjetas */
+  animation: deslizar-productos 6s linear infinite;
+}
+
+.productos-barberia:hover .pista-productos {
+  animation-play-state: paused;
+}
+
+@keyframes deslizar-productos {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tarjeta-producto {
+  min-width: 260px;
+  max-width: 260px;
+  height: 320px;
+  margin: 0 15px;
+  background: #e0d5ff;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.1);
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.tarjeta-img {
+  position: relative;
+  height: 200px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #eee;
+}
+
+.tarjeta-img img {
+  width: 140px;
+  height: 140px;
+  object-fit: contain;
+}
+
+.tarjeta-descuento {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(18%);
+  background: rgb(182, 106, 121);
+  color: white;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 5px;
+}
+
+.tarjeta-botones {
+  position: absolute;
+  bottom: 10px;
+  right: 25%;
+  display: flex;
+  gap: 5px;
+}
+
+.tarjeta-botones span {
+  background: white;
+  border-radius: 50%;
+  padding: 5px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+.tarjeta-contenido {
+  padding: 10px;
+  text-align: center;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 8px;
+}
+
+.tarjeta-estrellas {
+  color: gold;
+  margin-top: 12px;
+}
+
+.tarjeta-contenido h3 {
+  font-size: 1rem;
+  margin: 4px 0;
+}
+
+.tarjeta-carrito {
+  font-size: 1.2rem;
+  color: #444;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.tarjeta-precio {
+  font-weight: bold;
+  margin: 0;
+}
+
+.tarjeta-precio span {
+  color: gray;
+  text-decoration: line-through;
+  margin-left: 10px;
+}
+
+
+
+.notificacion-carrito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #28a745; /* Verde éxito */
+  color: white;
+  padding: 15px 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0,0,0,0.2);
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  animation: fadeInOut 3s forwards;
+}
+
+@keyframes fadeInOut {
+  0% {opacity: 0; transform: translateY(-20px);}
+  10% {opacity: 1; transform: translateY(0);}
+  90% {opacity: 1;}
+  100% {opacity: 0; transform: translateY(-20px);}
+}
+
+
+.cart-message {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #1ab63e;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 9999;
+  display: none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  transition: opacity 0.3s ease;
+}
+
+.usuario-contenedor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.usuario-contenedor i {
+  font-size: 24px; /* Puedes ajustar el tamaño del ícono */
+}
+
+#nombreUsuario {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: 5px;
+  color: #000000; /* Cambia si tienes fondo oscuro */
+  text-align: center;
+}
+
+
+/*---*/
+
+#btnScrollTop {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 1000;
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 14px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+#btnScrollTop:hover {
+  background-color: #444;
+}
